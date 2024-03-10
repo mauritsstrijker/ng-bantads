@@ -9,9 +9,9 @@ import { TelaInicialClienteComponent } from './components/tela-inicial-cliente';
   selector: 'app-root',
   standalone: true,
   imports: [
+    ButtonModule,
     CommonModule,
     RouterOutlet,
-    ButtonModule,
     NavbarComponent,
     RouterOutlet,
     TelaInicialClienteComponent,
