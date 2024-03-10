@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { TelaInicialClienteComponent } from './components/tela-inicial-cliente';
+import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.component';
+import { LoginComponent } from './components/login/login.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    ButtonModule,
     CommonModule,
     RouterOutlet,
     NavbarComponent,
     RouterOutlet,
-    TelaInicialClienteComponent,
+    AutoCadastroComponent,
+    LoginComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

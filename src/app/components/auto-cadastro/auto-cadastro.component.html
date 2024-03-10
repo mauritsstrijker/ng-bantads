@@ -1,0 +1,205 @@
+<div
+  class="surface-card p-4 shadow-2 border-round w-full lg:w-6"
+  style="margin: auto"
+>
+  <div class="d-flex flex-column text-center mb-5 pt-5">
+    <h1 class="display-4 m-0">Cadastro</h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 mb-5">
+      <div class="card">
+        <div class="card-body">
+          <div id="success"></div>
+          <form name="sentMessage" id="cadastroForm" novalidate>
+            <div class="field">
+              <label for="cpf" class="block text-900 font-medium mb-2"
+                >CPF</label
+              >
+              <input
+                type="text"
+                pInputText
+                type="text"
+                id="cpf"
+                placeholder="CPF"
+                required
+                data-validation-required-message="Por favor, digite seu CPF"
+              />
+            </div>
+            <div class="field">
+              <label for="nome" class="block text-900 font-medium mb-2"
+                >Nome</label
+              >
+              <input
+                type="text"
+                pInputText
+                type="text"
+                id="nome"
+                placeholder="Seu nome"
+                required
+                data-validation-required-message="Por favor, digite seu nome"
+              />
+            </div>
+            <div class="field">
+              <label for="email" class="block text-900 font-medium mb-2"
+                >E-mail</label
+              >
+              <input
+                type="text"
+                pInputText
+                type="email"
+                id="email"
+                placeholder="Seu e-mail"
+                required
+                data-validation-required-message="Por favor, digite seu email"
+              />
+              <div class="field">
+                <label for="telefone" class="block text-900 font-medium mb-2"
+                  >Telefone</label
+                >
+                <input
+                  type="text"
+                  pInputText
+                  type="text"
+                  id="telefone"
+                  placeholder="Seu telefone"
+                  required
+                  data-validation-required-message="Por favor, digite seu telefone"
+                />
+              </div>
+              <div class="field">
+                <label for="endereco" class="block text-900 font-medium mb-2"
+                  >Endereço</label
+                >
+                <input
+                  type="text"
+                  pInputText
+                  type="text"
+                  id="endereco"
+                  placeholder="Seu endereço"
+                  required
+                  data-validation-required-message="Por favor, digite seu endereço"
+                />
+              </div>
+              <div class="field">
+                <label for="salario" class="block text-900 font-medium mb-2"
+                  >Salário Mensal</label
+                >
+                <input
+                  type="text"
+                  pInputText
+                  type="text"
+                  id="salario"
+                  placeholder="Seu salário mensal"
+                  required
+                  data-validation-required-message="Por favor, digite seu salário mensal"
+                />
+              </div>
+              <!--<div class="field">
+                <label for="cep" class="block text-900 font-medium mb-2"
+                  >CEP</label
+                >
+                <input
+                  type="text"
+                  pInputText
+                  type="text"
+                  id="cep"
+                  placeholder="Seu CEP"
+                  required
+                  data-validation-required-message="Por favor, digite seu CEP"
+                />
+              </div>
+              <div class="field">
+                <label for="numero" class="block text-900 font-medium mb-2"
+                  >Número</label
+                >
+                <input
+                  type="text"
+                  pInputText
+                  type="text"
+                  id="numero"
+                  placeholder="Seu número"
+                  required
+                  data-validation-required-message="Por favor, digite seu número"
+                />
+              </div>
+              <div class="field">
+                <label for="rua" class="block text-900 font-medium mb-2"
+                  >Rua</label
+                >
+                <input
+                  type="text"
+                  pInputText
+                  type="text"
+                  id="rua"
+                  placeholder="Sua rua"
+                  required
+                  data-validation-required-message="Por favor, digite sua rua"
+                />
+              </div>
+              <div class="field">
+                <label for="estado" class="block text-900 font-medium mb-2"
+                  >Estado</label
+                >
+                <input
+                  type="text"
+                  pInputText
+                  type="text"
+                  id="estado"
+                  placeholder="Seu estado"
+                  required
+                  data-validation-required-message="Por favor, digite seu estado"
+                />
+              </div>
+              <div class="field">
+                <label for="cidade" class="block text-900 font-medium mb-2"
+                  >Cidade</label
+                >
+                <input
+                  type="text"
+                  pInputText
+                  type="text"
+                  id="cidade"
+                  placeholder="Sua cidade"
+                  required
+                  data-validation-required-message="Por favor, digite sua cidade"
+                />
+              </div>
+              <div class="field">
+                <label for="bairro" class="block text-900 font-medium mb-2"
+                  >Bairro</label
+                >
+                <input
+                  type="text"
+                  pInputText
+                  type="text"
+                  id="bairro"
+                  placeholder="Seu bairro"
+                  required
+                  data-validation-required-message="Por favor, digite seu bairro"
+                />
+              </div>-->
+              <div class="field">
+                <p-button
+                  label="Cadastrar"
+                  type="submit"
+                  class="p-button-primary"
+                  (click)="showSuccessMessage = true"
+                ></p-button>
+                <p-messages *ngIf="showSuccessMessage" severity="success">
+                  <ng-template pTemplate>
+                    <i
+                      class="pi pi-check"
+                      width="32"
+                      style="color: slateblue"
+                    ></i>
+                    <div class="ml-2">Cadastro realizado com sucesso.</div>
+                  </ng-template>
+                </p-messages>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
