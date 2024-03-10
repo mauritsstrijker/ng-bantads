@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.component';
+import { LoginComponent } from './components/login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   imports: [
     CommonModule,
     RouterOutlet,
-    ButtonModule,
     NavbarComponent,
     RouterOutlet,
+    AutoCadastroComponent,
+    LoginComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
