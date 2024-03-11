@@ -1,0 +1,60 @@
+<div>
+    <div class="flex ">
+        <div class="col ">
+            <div class="text-900 text-5xl font-medium mb-3">
+                Olá Leonardo Araujo
+            </div>
+        </div>
+        <div class="col-fixed" style="width:400px">
+            <div class="card flex justify-content-end">
+                <p-button label="Alterar dados"styleClass="mr-2"></p-button>
+                <p-button label="" icon="pi pi-sign-out"></p-button>
+            </div>
+        </div>
+    </div>
+</div>
+<div 
+    class="surface-card p-4 shadow-2 border-round w-full lg:w-8"
+    style="margin: auto"
+>
+    <div class="text-center mb-5">
+        <div class="text-900 text-3xl font-medium mb-3">Seu saldo atual é de R$ 1000,00!</div>
+    </div>
+    <div>
+        <p-table [tableStyle]="{ 'min-width': '30rem' }">
+            <ng-template pTemplate="caption">
+                <div class="flex align-items-center justify-content-between">
+                    Ultimas Movimentações
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Data</th>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body">
+                <tr>
+                    <td>05/03/24</td>
+                    <td>Saque</td>
+                    <td>R$ 300,00</td>
+                </tr>
+                <tr>
+                    <td>03/03/24</td>
+                    <td>Depósito</td>
+                    <td>R$ 500,00</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div>
+        <div class="card flex justify-content-center mt-5">
+            <p-button label="Depósito" icon="pi pi-wallet" styleClass="mr-2"></p-button>
+            <p-button label="Saque" icon="pi pi-eject" styleClass="mr-2"></p-button>
+            <p-button label="Transferencia" icon="pi pi-envelope" styleClass="mr-2" ></p-button>
+            <p-button label="Extrato" icon="pi pi-print"></p-button>
+        </div>
+    </div>
+</div>
+    
