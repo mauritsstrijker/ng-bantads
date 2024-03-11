@@ -1,0 +1,29 @@
+<div class="flex">
+  <div class="mt-6 h-full w-12 flex justify-content-center">
+    <p-card [styleClass]="'justify-content-center flex align-items-center'">
+      <p class="mb-3 flex justify-content-center">Saldo disponível:</p>
+      <p-inputNumber
+        class="mb-3 flex justify-content-center"
+        placeholder="R$15.605,00"
+        pInputText
+        [disabled]="true"
+      />
+      <p class="mb-3 flex justify-content-center">Valor a ser sacado:</p>
+      <div class="flex flex-column justify-content-center align-items-center">
+        <div class="mb-3">
+          <p-inputNumber
+            id="currency"
+            mode="currency"
+            inputId="currency-brazil"
+            currency="BRL"
+            locale="pt-BR"
+          >
+          </p-inputNumber>
+        </div>
+        <div>
+          <p-button label="Sacar"></p-button>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</div>

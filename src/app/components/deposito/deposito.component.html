@@ -1,0 +1,22 @@
+<div class="flex">
+  <div class="mt-6 h-full w-12 flex justify-content-center">
+    <p-card [styleClass]="'justify-content-center flex align-items-center'">
+      <p class="mb-3 flex justify-content-center">Valor a ser depositado:</p>
+      <div class="flex flex-column justify-content-center align-items-center">
+        <div class="mb-3">
+          <p-inputNumber
+            id="currency"
+            mode="currency"
+            inputId="currency-brazil"
+            currency="BRL"
+            locale="pt-BR"
+          >
+          </p-inputNumber>
+        </div>
+        <div>
+          <p-button label="Depositar"></p-button>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</div>
