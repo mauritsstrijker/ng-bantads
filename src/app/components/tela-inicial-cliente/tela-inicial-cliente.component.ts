@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { Component } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 
