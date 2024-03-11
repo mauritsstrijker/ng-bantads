@@ -1,0 +1,29 @@
+<div class="flex">
+  <div class="mt-6 h-full w-12 flex justify-content-center">
+    <p-card [styleClass]="'justify-content-center flex align-items-center'">
+      <p class="mb-3 flex justify-content-center">Chave de transferência:</p>
+      <div class="flex flex-column justify-content-center align-items-center">
+        <div class="mb-3">
+          <p-inputMask
+            mask="999.999.999-99"
+            placeholder="___.___.___-__"
+          ></p-inputMask>
+        </div>
+        <p class="mb-3 flex justify-content-center">Valor a ser transferido:</p>
+        <div class="mb-3">
+          <p-inputNumber
+            id="currency"
+            mode="currency"
+            inputId="currency-brazil"
+            currency="BRL"
+            locale="pt-BR"
+          >
+          </p-inputNumber>
+        </div>
+        <div>
+          <p-button label="Transferir"></p-button>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</div>
