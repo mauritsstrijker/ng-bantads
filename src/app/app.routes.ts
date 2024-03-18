@@ -4,6 +4,8 @@ import { LoginComponent } from './components/login/login.component';
 import { DepositoComponent } from './components/deposito/deposito.component';
 import { SaqueComponent } from './components/saque/saque.component';
 import { TransferenciaComponent } from './components/transferencia/transferencia.component';
+import { ConsultarClienteComponent } from './components/consultar-cliente/consultar-cliente.component';
+import { ConsultarMelhoresClientesComponent } from './components/consultar-melhores-clientes/consultar-melhores-clientes.component';
 
 export const routes: Routes = [
   { path: 'autocadastro', component: AutoCadastroComponent, pathMatch: 'full' },
@@ -11,6 +13,8 @@ export const routes: Routes = [
   { path: 'deposito', component: DepositoComponent, pathMatch: 'full' },
   { path: 'saque', component: SaqueComponent, pathMatch: 'full' },
   { path: 'transferencia', component: TransferenciaComponent, pathMatch: 'full' },
+  { path: 'crcliente', component: ConsultarClienteComponent, pathMatch: 'full' },
+  { path: 'crmelhorcliente', component: ConsultarMelhoresClientesComponent, pathMatch: 'full' },
 
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

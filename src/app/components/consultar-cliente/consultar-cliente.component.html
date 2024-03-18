@@ -1,0 +1,21 @@
+<div class="flex">
+  <div class="mt-6 h-full w-12 flex justify-content-center">
+    <p-card [styleClass]="'justify-content-center flex align-items-center'">
+      <p class="mb-3 flex justify-content-center">
+        Informe o CPF para consulta:
+      </p>
+      <div class="flex flex-column justify-content-center align-items-center">
+        <div class="mb-3">
+          <p-inputMask
+            class="flex justify-content-center align-items-center ta-center"
+            mask="999.999.999-99"
+            placeholder="___.___.___-__"
+          ></p-inputMask>
+        </div>
+        <div>
+          <p-button label="Consultar cliente"></p-button>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</div>
