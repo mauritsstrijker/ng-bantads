@@ -50,7 +50,6 @@ export const routes: Routes = [
     component: ConsultaTodosClientesComponent,
     pathMatch: 'full',
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
   {
     path: 'consulta-cliente',
     component: ConsultarClienteComponent,
@@ -61,4 +60,5 @@ export const routes: Routes = [
     component: ConsultarMelhoresClientesComponent,
     pathMatch: 'full',
   },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
