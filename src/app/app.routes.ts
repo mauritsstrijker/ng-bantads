@@ -10,6 +10,7 @@ import { AlteracaoPerfilComponent } from './components/alteracao-perfil/alteraca
 import { ConsultaTodosClientesComponent } from './components/consulta-todos-clientes/consulta-todos-clientes.component';
 import { Component } from '@angular/core';
 import { TelaInicialGerenteComponent } from './components/tela-inicial-gerente/tela-inicial-gerente.component';
+import { TelaInicialAdministradorComponent } from './components/tela-inicial-administrador/tela-inicial-administrador.component';
 
 export const routes: Routes = [
   { path: 'autocadastro', component: AutoCadastroComponent, pathMatch: 'full' },
@@ -29,6 +30,11 @@ export const routes: Routes = [
   {
     path: 'inicio-gerente',
     component: TelaInicialGerenteComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'inicio-administrador',
+    component: TelaInicialAdministradorComponent,
     pathMatch: 'full',
   },
   { path: 'extrato', component: ConsultaExtratoComponent, pathMatch: 'full' },

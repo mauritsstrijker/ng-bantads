@@ -1,0 +1,24 @@
+<div class="flex justify-content-center align-items-center">
+  <div class="flex justify-content-center align-items-center w-12 md:w-6">
+    <div class="w-12">
+      <p-table [value]="gerentes">
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="text-center">Gerentes</th>
+            <th class="text-center">Quantidade de Clientes</th>
+            <th class="text-center">Saldos Positivos</th>
+            <th class="text-center">Saldos Negativos</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-gerentes>
+          <tr>
+            <td class="text-center">{{ gerentes.nome }}</td>
+            <td class="text-center">{{ gerentes.qtclientes }}</td>
+            <td class="text-center">{{ gerentes.saldopositivo }}</td>
+            <td class="text-center">{{ gerentes.saldonegativo }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
