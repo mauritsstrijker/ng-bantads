@@ -7,6 +7,7 @@ import { TransferenciaComponent } from './components/transferencia/transferencia
 import { TelaInicialClienteComponent } from './components/tela-inicial-cliente';
 import { ConsultaExtratoComponent } from './components/consulta-extrato/consulta-extrato.component';
 import { AlteracaoPerfilComponent } from './components/alteracao-perfil/alteracao-perfil.component';
+import { ConsultaTodosClientesComponent } from './components/consulta-todos-clientes/consulta-todos-clientes.component';
 import { Component } from '@angular/core';
 import { TelaInicialGerenteComponent } from './components/tela-inicial-gerente/tela-inicial-gerente.component';
 
@@ -36,5 +37,6 @@ export const routes: Routes = [
     component: AlteracaoPerfilComponent,
     pathMatch: 'full',
   },
+  { path: 'consulta-todos-clientes', component: ConsultaTodosClientesComponent, pathMatch: 'full'},
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
