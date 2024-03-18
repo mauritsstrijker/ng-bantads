@@ -11,6 +11,8 @@ import { ConsultaTodosClientesComponent } from './components/consulta-todos-clie
 import { Component } from '@angular/core';
 import { TelaInicialGerenteComponent } from './components/tela-inicial-gerente/tela-inicial-gerente.component';
 import { TelaInicialAdministradorComponent } from './components/tela-inicial-administrador/tela-inicial-administrador.component';
+import { ConsultarClienteComponent } from './components/consultar-cliente/consultar-cliente.component';
+import { ConsultarMelhoresClientesComponent } from './components/consultar-melhores-clientes/consultar-melhores-clientes.component';
 
 export const routes: Routes = [
   { path: 'autocadastro', component: AutoCadastroComponent, pathMatch: 'full' },
@@ -49,4 +51,14 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
+  {
+    path: 'consulta-cliente',
+    component: ConsultarClienteComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'consulta-melhores-clientes',
+    component: ConsultarMelhoresClientesComponent,
+    pathMatch: 'full',
+  },
 ];
