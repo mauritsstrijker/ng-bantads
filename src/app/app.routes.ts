@@ -43,6 +43,10 @@ export const routes: Routes = [
     component: AlteracaoPerfilComponent,
     pathMatch: 'full',
   },
-  { path: 'consulta-todos-clientes', component: ConsultaTodosClientesComponent, pathMatch: 'full'},
+  {
+    path: 'consulta-todos-clientes',
+    component: ConsultaTodosClientesComponent,
+    pathMatch: 'full',
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
