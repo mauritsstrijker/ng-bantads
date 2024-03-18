@@ -1,0 +1,52 @@
+<p-confirmPopup key="confirmar"></p-confirmPopup>
+<p-confirmPopup key="rejeitar">
+  <ng-template pTemplate="content" let-message>
+    <div
+      class="flex flex-column align-items-center w-full gap-3 surface-border"
+    >
+      <p>Motivo</p>
+      <input type="text" pInputText />
+    </div>
+  </ng-template>
+</p-confirmPopup>
+<div class="flex justify-content-center align-items-center">
+  <div class="flex justify-content-center align-items-center w-12 md:w-6">
+    <div class="w-12">
+      <p-table [value]="usuarios">
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="text-center">CPF</th>
+            <th class="text-center">Nome</th>
+            <th class="text-center">Salário</th>
+            <th class="text-center">Ações</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-usuario>
+          <tr>
+            <td class="text-center">{{ usuario.cpf }}</td>
+            <td class="text-center">{{ usuario.nome }}</td>
+            <td class="text-center">
+              {{ usuario.salario | currency : "BRL" }}
+            </td>
+            <td class="text-center">
+              <p-buttonGroup>
+                <p-button
+                  (onClick)="confirmarCadastro($event.target!)"
+                  size="small"
+                  severity="success"
+                  label="Confirmar"
+                ></p-button>
+                <p-button
+                  (onClick)="rejeitarCadastro($event.target!)"
+                  size="small"
+                  severity="danger"
+                  label="Rejeitar"
+                ></p-button>
+              </p-buttonGroup>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
