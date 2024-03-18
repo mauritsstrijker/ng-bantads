@@ -8,17 +8,33 @@ import { TelaInicialClienteComponent } from './components/tela-inicial-cliente';
 import { ConsultaExtratoComponent } from './components/consulta-extrato/consulta-extrato.component';
 import { AlteracaoPerfilComponent } from './components/alteracao-perfil/alteracao-perfil.component';
 import { Component } from '@angular/core';
-
-
+import { TelaInicialGerenteComponent } from './components/tela-inicial-gerente/tela-inicial-gerente.component';
 
 export const routes: Routes = [
   { path: 'autocadastro', component: AutoCadastroComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'deposito', component: DepositoComponent, pathMatch: 'full' },
   { path: 'saque', component: SaqueComponent, pathMatch: 'full' },
-  { path: 'transferencia', component: TransferenciaComponent, pathMatch: 'full' },
-  { path: 'inicio-cliente', component: TelaInicialClienteComponent, pathMatch: 'full'},
+  {
+    path: 'transferencia',
+    component: TransferenciaComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'inicio-cliente',
+    component: TelaInicialClienteComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'inicio-gerente',
+    component: TelaInicialGerenteComponent,
+    pathMatch: 'full',
+  },
   { path: 'extrato', component: ConsultaExtratoComponent, pathMatch: 'full' },
-  { path: 'alteracao-perfil', component: AlteracaoPerfilComponent, pathMatch: 'full'},
+  {
+    path: 'alteracao-perfil',
+    component: AlteracaoPerfilComponent,
+    pathMatch: 'full',
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
