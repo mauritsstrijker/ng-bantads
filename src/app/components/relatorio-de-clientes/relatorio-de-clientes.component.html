@@ -1,0 +1,45 @@
+<div
+  class="surface-card p-4 shadow-2 border-round w-full lg:w-6"
+  style="margin: auto"
+>
+  <div class="d-flex flex-column text-center mb-5 pt-5">
+    <h1 class="display-4 m-0">Relatório de Clientes</h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 mb-5">
+      <div class="card">
+        <div class="card-body">
+          <div id="success"></div>
+          <div class="mt-5" style="width: 100%">
+            <table class="table table-striped" style="width: 100%">
+              <thead>
+                <tr>
+                  <th style="text-align: left">Nome</th>
+                  <th style="text-align: left">CPF</th>
+                  <th style="text-align: left">Limite</th>
+                  <th style="text-align: left">Gerente da Conta</th>
+                  <th style="text-align: left">Saldo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cliente of clientes">
+                  <td>{{ cliente.nome }}</td>
+                  <td>{{ cliente.cpf }}</td>
+                  <td>R$ {{ cliente.limite }}</td>
+                  <td>{{ cliente.gerente }}</td>
+                  <td>R$ {{ cliente.saldo }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <p-button
+              type="submit"
+              class="p-button-primary"
+              (onClick)="gerarRelatorioClientes()"
+              >Gerar Relatório
+            </p-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
