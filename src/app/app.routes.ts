@@ -14,12 +14,13 @@ import { TelaInicialAdministradorComponent } from './components/tela-inicial-adm
 import { ConsultarClienteComponent } from './components/consultar-cliente/consultar-cliente.component';
 import { ConsultarMelhoresClientesComponent } from './components/consultar-melhores-clientes/consultar-melhores-clientes.component';
 import { RelatorioDeClientesComponent } from './components/relatorio-de-clientes/relatorio-de-clientes.component';
+import { AreaGerenciaComponent } from './components/area-gerencia/area-gerencia.component';
 
 export const routes: Routes = [
   { path: 'autocadastro', component: AutoCadastroComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'deposito', component: DepositoComponent, pathMatch: 'full' },
-  { path: 'saque', component: SaqueComponent, pathMatch: 'full' },
+  { path: 'areagerencia', component: AreaGerenciaComponent, pathMatch: 'full' },
   {
     path: 'transferencia',
     component: TransferenciaComponent,
