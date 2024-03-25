@@ -8,6 +8,8 @@ import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
 import { ButtonGroupModule } from 'primeng/buttongroup';
 import { Location } from '@angular/common';
+import { InputMaskModule } from 'primeng/inputmask';
+
 
 @Component({
   selector: 'app-alteracao-perfil',
@@ -21,6 +23,7 @@ import { Location } from '@angular/common';
     ButtonModule,
     MessagesModule,
     ButtonGroupModule,
+    InputMaskModule,
   ],
   templateUrl: './alteracao-perfil.component.html',
   styleUrl: './alteracao-perfil.component.scss'
