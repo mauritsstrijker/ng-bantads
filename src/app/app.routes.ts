@@ -67,5 +67,11 @@ export const routes: Routes = [
     component: RelatorioDeClientesComponent,
     pathMatch: 'full',
   },
+  {
+    path:'saque',
+    component: SaqueComponent,
+    pathMatch: 'full',
+  
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
