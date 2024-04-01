@@ -21,7 +21,12 @@
               pInputText [disabled]="true" 
               [(ngModel)]="valuecpf" 
               />-->
-              <span id="cpf" contenteditable="false" class="cpf-placeholder" data-validation-required-message="Por favor, digite seu CPF">
+              <span
+                id="cpf"
+                contenteditable="false"
+                class="cpf-placeholder"
+                data-validation-required-message="Por favor, digite seu CPF"
+              >
                 xxx.xxx.xxx-xx
               </span>
             </div>
@@ -96,19 +101,19 @@
               </div>
               <div class="field">
                 <p-buttonGroup>
-                    <p-button
-                        label="Salvar"
-                        type="submit"
-                        class="p-button-primary"
-                        (click)="showSuccessMessage = true"
-                        icon="pi pi-check"
-                    ></p-button>
-                    <p-button
-                        label="Calcelar"
-                        class="p-button-secundary"
-                        (click)="goBack()"
-                        icon="pi pi-times"
-                    ></p-button>
+                  <p-button
+                    label="Salvar"
+                    type="submit"
+                    class="p-button-primary"
+                    (click)="showSuccessMessage = true"
+                    icon="pi pi-check"
+                  ></p-button>
+                  <p-button
+                    label="Cancelar"
+                    class="p-button-secundary"
+                    (click)="goBack()"
+                    icon="pi pi-times"
+                  ></p-button>
                 </p-buttonGroup>
                 <p-messages *ngIf="showSuccessMessage" severity="success">
                   <ng-template pTemplate>

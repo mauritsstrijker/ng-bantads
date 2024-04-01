@@ -1,20 +1,20 @@
 import { Routes } from '@angular/router';
-import { AutoCadastroComponent } from './components/auto-cadastro/auto-cadastro.component';
-import { LoginComponent } from './components/login/login.component';
-import { DepositoComponent } from './components/deposito/deposito.component';
-import { SaqueComponent } from './components/saque/saque.component';
-import { TransferenciaComponent } from './components/transferencia/transferencia.component';
-import { TelaInicialClienteComponent } from './components/tela-inicial-cliente';
-import { ConsultaExtratoComponent } from './components/consulta-extrato/consulta-extrato.component';
-import { AlteracaoPerfilComponent } from './components/alteracao-perfil/alteracao-perfil.component';
-import { ConsultaTodosClientesComponent } from './components/consulta-todos-clientes/consulta-todos-clientes.component';
+import { AutoCadastroComponent } from './components/cliente/auto-cadastro/auto-cadastro.component';
+import { LoginComponent } from './components/cliente/login/login.component';
+import { DepositoComponent } from './components/cliente/deposito/deposito.component';
+import { SaqueComponent } from './components/cliente/saque/saque.component';
+import { TransferenciaComponent } from './components/cliente/transferencia/transferencia.component';
+import { TelaInicialClienteComponent } from './components/cliente/tela-inicial-cliente';
+import { ConsultaExtratoComponent } from './components/cliente/consulta-extrato/consulta-extrato.component';
+import { AlteracaoPerfilComponent } from './components/cliente/alteracao-perfil/alteracao-perfil.component';
+import { ConsultaTodosClientesComponent } from './components/gerente/consulta-todos-clientes/consulta-todos-clientes.component';
 import { Component } from '@angular/core';
-import { TelaInicialGerenteComponent } from './components/tela-inicial-gerente/tela-inicial-gerente.component';
-import { TelaInicialAdministradorComponent } from './components/tela-inicial-administrador/tela-inicial-administrador.component';
-import { ConsultarClienteComponent } from './components/consultar-cliente/consultar-cliente.component';
-import { ConsultarMelhoresClientesComponent } from './components/consultar-melhores-clientes/consultar-melhores-clientes.component';
-import { RelatorioDeClientesComponent } from './components/relatorio-de-clientes/relatorio-de-clientes.component';
-import { AreaGerenciaComponent } from './components/area-gerencia/area-gerencia.component';
+import { TelaInicialGerenteComponent } from './components/gerente/tela-inicial-gerente/tela-inicial-gerente.component';
+import { TelaInicialAdministradorComponent } from './components/admin/tela-inicial-administrador/tela-inicial-administrador.component';
+import { ConsultarClienteComponent } from './components/gerente/consultar-cliente/consultar-cliente.component';
+import { ConsultarMelhoresClientesComponent } from './components/gerente/consultar-melhores-clientes/consultar-melhores-clientes.component';
+import { RelatorioDeClientesComponent } from './components/admin/relatorio-de-clientes/relatorio-de-clientes.component';
+import { AreaGerenciaComponent } from './components/admin/area-gerencia/area-gerencia.component';
 
 export const routes: Routes = [
   { path: 'autocadastro', component: AutoCadastroComponent, pathMatch: 'full' },
@@ -68,10 +68,9 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path:'saque',
+    path: 'saque',
     component: SaqueComponent,
     pathMatch: 'full',
-  
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
