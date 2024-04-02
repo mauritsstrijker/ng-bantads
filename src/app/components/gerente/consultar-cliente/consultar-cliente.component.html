@@ -1,19 +1,45 @@
 <div class="flex">
   <div class="mt-6 h-full w-12 flex justify-content-center">
     <p-card [styleClass]="'justify-content-center flex align-items-center'">
+      <div class="d-flex flex-column text-center mb-5 pt-5">
+        <h1 class="display-4 m-0">Consulta de Cliente</h1>
+      </div>
       <p class="mb-3 flex justify-content-center">
         Informe o CPF para consulta:
       </p>
       <div class="flex flex-column justify-content-center align-items-center">
-        <div class="mb-3">
-          <p-inputMask
-            class="flex justify-content-center align-items-center ta-center"
-            mask="999.999.999-99"
-            placeholder="___.___.___-__"
-          ></p-inputMask>
-        </div>
-        <div>
-          <p-button label="Consultar cliente"></p-button>
+        <div class="flex flex-column justify-content-center align-items-center">
+          <div class="mb-3">
+            <p-inputMask mask="999.999.999-99" placeholder="CPF"></p-inputMask>
+          </div>
+          <div>
+            <p-button
+              label="Consultar cliente"
+              (click)="showDialog(clientes)"
+            ></p-button>
+          </div>
+          <p-dialog
+            header="Dados do Cliente"
+            [(visible)]="visible"
+            [modal]="true"
+            [style]="{ width: '50vw' }"
+            [draggable]="false"
+            [resizable]="false"
+          >
+            <div *ngIf="selectedCliente">
+              <p><strong>CPF:</strong> {{ selectedCliente.cpf }}</p>
+              <p><strong>Nome:</strong> {{ selectedCliente.nome }}</p>
+              <p><strong>Cidade:</strong> {{ selectedCliente.cidade }}</p>
+              <p><strong>Estado:</strong> {{ selectedCliente.estado }}</p>
+              <p><strong>Saldo:</strong> R$ {{ selectedCliente.saldo }}</p>
+              <p><strong>Email:</strong> teste&#64;ufpr.com</p>
+              <p><strong>Telefone:</strong> (41) 3361-4905</p>
+              <p>
+                <strong>Endereço:</strong> R. Dr. Alcides Vieira Arcoverde, 1225
+                - Jardim das Américas, Curitiba - PR, 81520-260
+              </p>
+            </div>
+          </p-dialog>
         </div>
       </div>
     </p-card>
