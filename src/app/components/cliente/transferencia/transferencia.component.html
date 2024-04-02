@@ -7,6 +7,7 @@
           <p-inputMask
             mask="999.999.999-99"
             placeholder="___.___.___-__"
+            styleClass="p-inputMask"
           ></p-inputMask>
         </div>
         <p class="mb-3 flex justify-content-center">Valor a ser transferido:</p>
@@ -17,13 +18,24 @@
             inputId="currency-brazil"
             currency="BRL"
             locale="pt-BR"
-          >
-          </p-inputNumber>
+          ></p-inputNumber>
         </div>
         <div>
-          <p-button label="Transferir"></p-button>
+          <p-button label="Transferir" (click)="abrirConfirmacao()"></p-button>
         </div>
       </div>
     </p-card>
   </div>
 </div>
+
+<p-dialog
+  header="Confirmação de Transferência"
+  [(visible)]="visible"
+  [modal]="true"
+>
+  <div>Valor a ser transferido: {{ valorTransferencia }}</div>
+  <p-footer>
+    <p-button label="Confirmar" (click)="transferir()"></p-button>
+    <p-button label="Cancelar" (click)="visible = false"></p-button>
+  </p-footer>
+</p-dialog>
