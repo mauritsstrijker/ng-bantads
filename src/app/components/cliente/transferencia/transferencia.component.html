@@ -18,6 +18,7 @@
             inputId="currency-brazil"
             currency="BRL"
             locale="pt-BR"
+            [(ngModel)]="valorTransferencia"
           ></p-inputNumber>
         </div>
         <div>
@@ -33,7 +34,9 @@
   [(visible)]="visible"
   [modal]="true"
 >
-  <div>Valor a ser transferido: {{ valorTransferencia }}</div>
+  <div>
+    Valor a ser transferido: {{ valorTransferencia | currency : "BRL" }}
+  </div>
   <p-footer>
     <p-button label="Confirmar" (click)="transferir()"></p-button>
     <p-button label="Cancelar" (click)="visible = false"></p-button>

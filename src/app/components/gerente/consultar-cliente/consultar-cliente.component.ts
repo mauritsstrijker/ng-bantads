@@ -8,7 +8,13 @@ import { Dialog, DialogModule } from 'primeng/dialog';
 @Component({
   selector: 'app-consultar-cliente',
   standalone: true,
-  imports: [InputNumberModule, ButtonModule, CardModule, InputMaskModule, DialogModule],
+  imports: [
+    InputNumberModule,
+    ButtonModule,
+    CardModule,
+    InputMaskModule,
+    DialogModule,
+  ],
   templateUrl: './consultar-cliente.component.html',
   styleUrl: './consultar-cliente.component.scss',
 })

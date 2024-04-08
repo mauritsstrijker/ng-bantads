@@ -2,28 +2,49 @@
   <div class="mt-6 h-full w-12 flex justify-content-center">
     <p-card [styleClass]="'justify-content-center flex align-items-center'">
       <p class="mb-3 flex justify-content-center">Saldo disponível:</p>
-      <p-inputNumber
+      <input
+        type="text"
+        pInputText
         class="mb-3 flex justify-content-center"
         placeholder="R$15.605,00"
-        pInputText
         [disabled]="true"
+        [value]="saldoDisponivel | currency : 'BRL'"
       />
       <p class="mb-3 flex justify-content-center">Valor a ser sacado:</p>
       <div class="flex flex-column justify-content-center align-items-center">
         <div class="mb-3">
           <p-inputNumber
-            id="currency"
+            id="valorSaque"
             mode="currency"
             inputId="currency-brazil"
             currency="BRL"
             locale="pt-BR"
-          >
-          </p-inputNumber>
+            [(ngModel)]="valorSaque"
+          ></p-inputNumber>
         </div>
         <div>
-          <p-button label="Sacar"></p-button>
+          <p-button label="Sacar" (click)="abrirConfirmacaoSaque()"></p-button>
         </div>
       </div>
     </p-card>
   </div>
 </div>
+
+<p-dialog header="Confirmação de Saque" [(visible)]="visible" [modal]="true">
+  <div>
+    <p>Saque de: {{ valorSaque | currency : "BRL" }}</p>
+    <p>Saldo restante: {{ valorRestante | currency : "BRL" }}</p>
+  </div>
+  <p-footer>
+    <p-button
+      label="Confirmar"
+      (click)="confirmarSaque()"
+      class="p-button-success"
+    ></p-button>
+    <p-button
+      label="Cancelar"
+      (click)="visible = false"
+      class="p-button-secondary"
+    ></p-button>
+  </p-footer>
+</p-dialog>
