@@ -4,6 +4,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @Component({
   selector: 'app-consulta-todos-clientes',
@@ -14,6 +15,7 @@ import { DialogModule } from 'primeng/dialog';
     CommonModule,
     ButtonModule,
     DialogModule,
+    InputMaskModule,
   ],
   templateUrl: './consulta-todos-clientes.component.html',
   styleUrl: './consulta-todos-clientes.component.scss',

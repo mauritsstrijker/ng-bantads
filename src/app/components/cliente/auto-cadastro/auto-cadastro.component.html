@@ -10,18 +10,20 @@
       <div class="card">
         <div class="card-body">
           <div id="success"></div>
-          <form name="sentMessage" id="cadastroForm" novalidate>
+          <form
+            [formGroup]="novoUsuarioForm"
+            (ngSubmit)="onSubmit()"
+            #formDir="ngForm"
+          >
             <div class="field">
               <label for="cpf" class="block text-900 font-medium mb-2"
                 >CPF</label
               >
-              <input
+              <p-inputMask
                 type="text"
-                pInputText
-                type="text"
+                mask="999.999.999-99"
                 id="cpf"
-                placeholder="CPF"
-                required
+                placeholder="Seu CPF"
                 data-validation-required-message="Por favor, digite seu CPF"
               />
             </div>
@@ -56,98 +58,118 @@
                 <label for="telefone" class="block text-900 font-medium mb-2"
                   >Telefone</label
                 >
-                <input
+                <p-inputMask
                   type="text"
-                  pInputText
-                  type="text"
+                  mask="(99) 99999-9999"
                   id="telefone"
-                  placeholder="Seu telefone"
-                  required
+                  placeholder="Seu Telefone"
                   data-validation-required-message="Por favor, digite seu telefone"
-                />
-              </div>
-              <div class="field">
-                <label for="endereco" class="block text-900 font-medium mb-2"
-                  >Endereço</label
-                >
-                <input
-                  type="text"
-                  pInputText
-                  type="text"
-                  id="endereco"
-                  placeholder="Seu endereço"
-                  required
-                  data-validation-required-message="Por favor, digite seu endereço"
                 />
               </div>
               <div class="field">
                 <label for="salario" class="block text-900 font-medium mb-2"
                   >Salário Mensal</label
                 >
-                <input
-                  type="text"
-                  pInputText
-                  type="text"
+                <p-inputNumber
                   id="salario"
-                  placeholder="Seu salário mensal"
-                  required
-                  data-validation-required-message="Por favor, digite seu salário mensal"
-                />
+                  mode="currency"
+                  inputId="currency-brazil"
+                  currency="BRL"
+                  locale="pt-BR"
+                >
+                </p-inputNumber>
               </div>
-              <!--<div class="field">
+              <div class="field">
+                <label for="tipo" class="block text-900 font-medium mb-2"
+                  >Tipo de Logradouro</label
+                >
+                <p-listbox
+                  [options]="tiposLogradouro"
+                  (onChange)="onTipoLogradouroChange($event)"
+                >
+                  <ng-template let-item pTemplate="item">
+                    <div class="custom-list-item">
+                      <span>{{ item }}</span>
+                    </div>
+                  </ng-template>
+                </p-listbox>
+              </div>
+              <div class="field">
                 <label for="cep" class="block text-900 font-medium mb-2"
                   >CEP</label
                 >
-                <input
+                <p-inputMask
                   type="text"
-                  pInputText
-                  type="text"
+                  mask="99999-999"
                   id="cep"
                   placeholder="Seu CEP"
-                  required
+                  formControlName="cep"
                   data-validation-required-message="Por favor, digite seu CEP"
                 />
+                <p
+                  *ngIf="cep && cep.invalid && (cep.dirty || cep.touched) && cep.errors?.['required']"
+                  class="help-block text-danger"
+                >
+                  Por favor, preencha seu CEP
+                </p>
               </div>
+              <div class="block text-900 font-medium mb-2">
+                <p-button
+                  label="Buscar Endereço"
+                  type="submit"
+                  class="p-button-primary"
+                  (click)="buscaEndereco()"
+                ></p-button>
+              </div>
+              <label for="rua" class="block text-900 font-medium mb-2"
+                >Rua</label
+              >
+              <input
+                type="text"
+                pInputText
+                placeholder="Rua"
+                class="form-control p-4"
+                formControlName="rua"
+                required
+                readonly
+              />
               <div class="field">
                 <label for="numero" class="block text-900 font-medium mb-2"
                   >Número</label
                 >
                 <input
-                  type="text"
+                  type="number"
                   pInputText
-                  type="text"
+                  placeholder="Número"
                   id="numero"
-                  placeholder="Seu número"
+                  formControlName="numero"
                   required
-                  data-validation-required-message="Por favor, digite seu número"
                 />
+                <p
+                  *ngIf="numero && numero.invalid && (numero.dirty || numero.touched) && numero.errors?.['required']"
+                  class="help-block text-danger"
+                >
+                  Por favor, preencha o número do endereço
+                </p>
+                <p
+                  *ngIf="numero && numero.invalid && (numero.dirty || numero.touched) && numero.errors?.['min']"
+                  class="help-block text-danger"
+                >
+                  Por favor, preencha um número positivo
+                </p>
               </div>
               <div class="field">
-                <label for="rua" class="block text-900 font-medium mb-2"
-                  >Rua</label
+                <label for="bairro" class="block text-900 font-medium mb-2"
+                  >Bairro</label
                 >
                 <input
                   type="text"
                   pInputText
-                  type="text"
-                  id="rua"
-                  placeholder="Sua rua"
+                  placeholder="Bairro"
+                  class="form-control p-4"
+                  formControlName="bairro"
                   required
-                  data-validation-required-message="Por favor, digite sua rua"
-                />
-              </div>
-              <div class="field">
-                <label for="estado" class="block text-900 font-medium mb-2"
-                  >Estado</label
-                >
-                <input
-                  type="text"
-                  pInputText
-                  type="text"
-                  id="estado"
-                  placeholder="Seu estado"
-                  required
-                  data-validation-required-message="Por favor, digite seu estado"
+                  readonly
                 />
               </div>
               <div class="field">
@@ -157,45 +179,54 @@
                 <input
                   type="text"
                   pInputText
-                  type="text"
-                  id="cidade"
-                  placeholder="Sua cidade"
+                  placeholder="Cidade"
+                  class="form-control p-4"
+                  formControlName="cidade"
                   required
-                  data-validation-required-message="Por favor, digite sua cidade"
+                  readonly
                 />
               </div>
               <div class="field">
-                <label for="bairro" class="block text-900 font-medium mb-2"
-                  >Bairro</label
+                <label for="estado" class="block text-900 font-medium mb-2"
+                  >Estado</label
                 >
                 <input
                   type="text"
                   pInputText
-                  type="text"
-                  id="bairro"
-                  placeholder="Seu bairro"
+                  placeholder="Estado"
+                  class="form-control p-4"
+                  formControlName="estado"
                   required
-                  data-validation-required-message="Por favor, digite seu bairro"
+                  readonly
                 />
-              </div>-->
-              <div class="field">
-                <p-button
-                  label="Cadastrar"
-                  type="submit"
-                  class="p-button-primary"
-                  (click)="showSuccessMessage = true"
-                ></p-button>
-                <p-messages *ngIf="showSuccessMessage" severity="success">
-                  <ng-template pTemplate>
-                    <i
-                      class="pi pi-check"
-                      width="32"
-                      style="color: slateblue"
-                    ></i>
-                    <div class="ml-2">Cadastro realizado com sucesso.</div>
-                  </ng-template>
-                </p-messages>
               </div>
+            </div>
+            <div class="block text-900 font-medium mb-2">
+              <p-button
+                label="Limpar"
+                class="p-button-primary"
+                type="submit"
+                (click)="limparForm()"
+              >
+              </p-button>
+            </div>
+            <div class="field">
+              <p-button
+                label="Cadastrar"
+                type="submit"
+                class="p-button-primary"
+                (click)="showSuccessMessage = true"
+              ></p-button>
+              <p-messages *ngIf="showSuccessMessage" severity="success">
+                <ng-template pTemplate>
+                  <i
+                    class="pi pi-check"
+                    width="32"
+                    style="color: slateblue"
+                  ></i>
+                  <div class="ml-2">Cadastro realizado com sucesso.</div>
+                </ng-template>
+              </p-messages>
             </div>
           </form>
         </div>
