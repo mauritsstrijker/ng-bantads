@@ -21,7 +21,7 @@
                   pInputText
                   type="text"
                   id="nome"
-                  placeholder="nome"
+                  placeholder="Nome"
                 />
                 <i class="pi pi-search" style="cursor: pointer"></i>
               </div>
@@ -31,12 +31,12 @@
                 >Pesquisa por CPF:</label
               >
               <div class="p-input-icon-right">
-                <input
+                <p-inputMask
                   type="text"
-                  pInputText
-                  type="text"
+                  mask="999.999.999-99"
                   id="cpf"
-                  placeholder="cpf"
+                  placeholder="CPF"
+                  data-validation-required-message="Por favor, digite seu CPF"
                 />
                 <i class="pi pi-search" style="cursor: pointer"></i>
               </div>
