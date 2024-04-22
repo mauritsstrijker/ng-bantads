@@ -3,6 +3,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../shared/services/login.service';
+import { Usuario } from '../shared/model';
 
 @Component({
   selector: 'app-navbar',
@@ -12,13 +14,18 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private loginService: LoginService) {}
+
+  get usuarioLogado(): Usuario | null {
+    return this.loginService.usuarioLogado;
+  }
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
   }
 
-  public mostrarCliente: boolean = true;
-  public mostrarGerente: boolean = false;
-  public mostrarAdmin: boolean = false;
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['/login']);
+  }
 }
