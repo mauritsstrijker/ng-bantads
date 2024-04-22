@@ -8,7 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
-import { ViaCepService } from '../../services/viacep.service';
+import { ViaCepService } from '../../shared/services/viacep.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ListboxModule } from 'primeng/listbox';
 

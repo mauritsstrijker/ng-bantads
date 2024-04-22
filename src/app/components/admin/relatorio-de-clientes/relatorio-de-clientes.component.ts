@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
-import { RelatorioService } from '../../services/relatorio.service';
+import { RelatorioService } from '../../shared/services/relatorio.service';
 
 @Component({
   selector: 'app-relatorio-de-clientes',

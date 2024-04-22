@@ -1,5 +1,8 @@
 <div class="bg-gray-800 h-3rem shadow-2">
-  <div class="navbar-nav mr-auto py-0" *ngIf="mostrarCliente">
+  <div
+    class="navbar-nav mr-auto py-0"
+    *ngIf="usuarioLogado?.perfil === 'cliente'"
+  >
     <p-button
       label="Autocadastro"
       [outlined]="true"
@@ -41,7 +44,10 @@
       (click)="navigateTo('transferencia')"
     ></p-button>
   </div>
-  <div class="navbar-nav mr-auto py-0" *ngIf="mostrarGerente">
+  <div
+    class="navbar-nav mr-auto py-0"
+    *ngIf="usuarioLogado?.perfil === 'gerente'"
+  >
     <p-button
       label="Página inicial"
       [outlined]="true"
@@ -63,7 +69,10 @@
       (click)="navigateTo('consulta-melhores-clientes')"
     ></p-button>
   </div>
-  <div class="navbar-nav mr-auto py-0" *ngIf="mostrarAdmin">
+  <div
+    class="navbar-nav mr-auto py-0"
+    *ngIf="usuarioLogado?.perfil === 'admin'"
+  >
     <p-button
       label="Página inicial"
       [outlined]="true"
