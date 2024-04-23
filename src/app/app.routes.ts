@@ -16,6 +16,10 @@ import { RelatorioDeClientesComponent } from './components/admin/relatorio-de-cl
 import { AreaGerenciaComponent } from './components/admin/area-gerencia/area-gerencia.component';
 import { authGuard } from './components/authguard/auth.guard';
 import { Perfil } from './components/shared/model';
+import { InserirGerenteComponent } from './components/gerente/insercao-gerente/insercao-gerente.component';
+import { RemoverGerenteComponent } from './components/gerente/remocao-gerente/remocao-gerente.component';
+import { ListarGerentesComponent } from './components/gerente/listar-gerentes/listar-gerentes.component';
+import { AlterarGerenteComponent } from './components/gerente/alterar-gerente/alterar-gerente.component';
 
 export const routes: Routes = [
   {
@@ -119,6 +123,42 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'insercao-gerente',
+    component: InserirGerenteComponent,
+    pathMatch: 'full',
+    canActivate: [authGuard],
+    data: {
+      role: [Perfil.GERENTE],
+    },
+  },
+  {
+    path: 'remocao-gerente',
+    component: RemoverGerenteComponent,
+    pathMatch: 'full',
+    canActivate: [authGuard],
+    data: {
+      role: [Perfil.GERENTE],
+    },
+  },
+  {
+    path: 'listar-gerentes',
+    component: ListarGerentesComponent,
+    pathMatch: 'full',
+    canActivate: [authGuard],
+    data: {
+      role: [Perfil.GERENTE],
+    },
+  },
+  {
+    path: 'alterar-gerente',
+    component: AlterarGerenteComponent,
+    pathMatch: 'full',
+    canActivate: [authGuard],
+    data: {
+      role: [Perfil.GERENTE],
+    },
+  },
+  {
     path: 'inicio-administrador',
     component: TelaInicialAdministradorComponent,
     pathMatch: 'full',
@@ -145,5 +185,6 @@ export const routes: Routes = [
       role: [Perfil.ADMIN],
     },
   },
+
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

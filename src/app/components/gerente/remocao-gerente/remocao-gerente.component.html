@@ -1,0 +1,23 @@
+<div class="mt-6 h-full w-12 flex justify-content-center">
+  <div class="p-col-6">
+    <div class="card p-shadow-4">
+      <h1 class="p-text-center">Remover Gerente</h1>
+
+      <div class="p-fluid">
+        <ul class="p-list-unstyled">
+          <li *ngFor="let gerente of gerentes">
+            <div class="p-d-flex p-ai-center">
+              <div>{{ gerente.nome }}</div>
+              <button
+                class="p-button p-button-danger p-ml-auto"
+                (click)="removerGerente(gerente)"
+              >
+                Remover
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
