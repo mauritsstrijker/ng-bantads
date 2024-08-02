@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { GerenteService } from '../../shared/services/gerente.service';
 
 @Component({
   selector: 'app-listar-gerentes',
   templateUrl: './listar-gerentes.component.html',
   styleUrls: ['./listar-gerentes.component.scss'],
 })
-export class ListarGerentesComponent {
+export class ListarGerentesComponent implements OnInit {
+  gerenteService = inject(GerenteService);
+
   gerentes: any[] = [
     {
       nome: 'Gerente 1',
@@ -20,4 +23,15 @@ export class ListarGerentesComponent {
       telefone: '(00) 98765-4321',
     },
   ];
+
+  ngOnInit() {
+    this.gerenteService.buscarTodos().subscribe({
+      next: (response) => {
+        this.gerentes = response;
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
+  }
 }

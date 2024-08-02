@@ -42,7 +42,7 @@ export class LoginComponent {
     if (this.formLogin.form.valid) {
       this.loginService.login(this.login).subscribe((usu) => {
         if (usu != null) {
-          this.loginService.usuarioLogado = usu;
+          this.loginService.setToken(usu);
           this.loading = false;
           this.redirecionaUsuarioLogado();
         } else {

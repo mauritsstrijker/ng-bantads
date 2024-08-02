@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CheckboxModule } from 'primeng/checkbox';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
@@ -11,6 +11,10 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { ViaCepService } from '../../shared/services/viacep.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ListboxModule } from 'primeng/listbox';
+import {
+  AutoCadastroCommand,
+  ClienteService,
+} from '../../shared/services/cliente.service';
 
 @Component({
   selector: 'app-auto-cadastro',
@@ -35,52 +39,7 @@ export class AutoCadastroComponent {
   constructor(private viacepService: ViaCepService) {}
   showSuccessMessage = false;
 
-  tiposLogradouro = [
-    'Aeroporto',
-    'Alameda',
-    'Área',
-    'Avenida',
-    'Campo',
-    'Chácara',
-    'Colônia',
-    'Condomínio',
-    'Conjunto',
-    'Distrito',
-    'Esplanada',
-    'Estação',
-    'Estrada',
-    'Favela',
-    'Fazenda',
-    'Feira',
-    'Jardim',
-    'Ladeira',
-    'Lago',
-    'Lagoa',
-    'Largo',
-    'Loteamento',
-    'Morro',
-    'Núcleo',
-    'Parque',
-    'Passarela',
-    'Pátio',
-    'Praça',
-    'Quadra',
-    'Recanto',
-    'Residencial',
-    'Rodovia',
-    'Rua',
-    'Setor',
-    'Sítio',
-    'Travessa',
-    'Trecho',
-    'Trevo',
-    'Vale',
-    'Vereda',
-    'Via',
-    'Viaduto',
-    'Viela',
-    'Vila',
-  ];
+  clienteService = inject(ClienteService);
 
   endereco = { cep: '', rua: '', numero: '', complemento: '' };
   novoUsuario = {
@@ -89,6 +48,7 @@ export class AutoCadastroComponent {
     email: '',
     telefone: '',
     endereco: this.endereco,
+    salario: '',
   };
   novoUsuarioForm!: FormGroup;
 
@@ -99,6 +59,7 @@ export class AutoCadastroComponent {
         // TODO: custom CPF validator
       ]),
       nome: new FormControl(this.novoUsuario.nome, [Validators.required]),
+      salario: new FormControl(this.novoUsuario.salario, [Validators.required]),
       email: new FormControl(this.novoUsuario.email, [
         Validators.required,
         Validators.email,
@@ -115,7 +76,6 @@ export class AutoCadastroComponent {
       estado: new FormControl(this.endereco.numero, [Validators.required]),
       cidade: new FormControl(this.endereco.numero, [Validators.required]),
       bairro: new FormControl(this.endereco.numero, [Validators.required]),
-      tipoLogradouro: new FormControl('', [Validators.required]),
     });
   }
 
@@ -135,8 +95,26 @@ export class AutoCadastroComponent {
   }
 
   onSubmit() {
-    if (this.novoUsuarioForm.invalid) return;
-    this.novoUsuarioForm.reset({});
+    if (this.novoUsuarioForm.valid) {
+      var command: AutoCadastroCommand = {
+        nomeCompleto: this.novoUsuarioForm.get('nome').value,
+        email: this.novoUsuarioForm.get('email').value,
+        cpf: this.novoUsuarioForm.get('cpf').value,
+        endereco: {
+          cep: this.novoUsuarioForm.get('cep').value,
+          rua: this.novoUsuarioForm.get('rua').value,
+          numero: this.novoUsuarioForm.get('numero').value,
+          estado: this.novoUsuarioForm.get('estado').value,
+          cidade: this.novoUsuarioForm.get('cidade').value,
+        },
+        telefone: this.novoUsuarioForm.get('telefone').value,
+        salario: this.novoUsuarioForm.get('salario').value,
+      };
+      this.clienteService.autoCadastro(command).subscribe((response) => {
+        this.showSuccessMessage = true;
+      });
+      console.log(command);
+    }
   }
 
   onTipoLogradouroChange(event: any) {

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Endereco } from '../model/endereco.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,7 @@ export class ClienteService {
   http = inject(HttpClient);
 
   //TODO - Atualizar depois url
-  apiUrl = 'http://localhost:seilaaporta/clientes/';
+  apiUrl = 'http://localhost:3000/';
 
   constructor() {}
 
@@ -32,4 +33,17 @@ export class ClienteService {
   buscarTodos() {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  autoCadastro(command: AutoCadastroCommand) {
+    return this.http.post<any>(this.apiUrl + 'autocadastro', command);
+  }
+}
+
+export interface AutoCadastroCommand {
+  nomeCompleto: string;
+  email: string;
+  cpf: string;
+  endereco: Endereco;
+  telefone: string;
+  salario: number;
 }
