@@ -24,10 +24,12 @@ export class LoginService {
   public get usuarioLogado(): Usuario | null {
     const decoded = this.decodedToken;
     if (decoded) {
-      return {
-        id: decoded.id,
-        role: decoded.role,
+      var response = {
+        userId: decoded.userId,
+        perfil: decoded.perfil,
       } as Usuario;
+
+      return response;
     }
     return null;
   }

@@ -1,13 +1,14 @@
 import { Endereco } from './endereco.model';
 
 export enum Perfil {
-  CLIENTE = 'cliente',
-  GERENTE = 'gerente',
-  ADMIN = 'admin',
+  CLIENTE = 'CLIENTE',
+  GERENTE = 'GERENTE',
+  ADMIN = 'ADMIN',
 }
 
 export class Usuario {
   constructor(
+    public userId?: string,
     public cpf?: string,
     public nome?: string,
     public email?: string,

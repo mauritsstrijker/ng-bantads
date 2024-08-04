@@ -29,9 +29,7 @@ export class ListarGerentesComponent implements OnInit {
       next: (response) => {
         this.gerentes = response;
       },
-      error: (e) => {
-        console.log(e);
-      },
+      error: (e) => {},
     });
   }
 }

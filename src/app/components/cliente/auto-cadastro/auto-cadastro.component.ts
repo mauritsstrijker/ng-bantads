@@ -113,7 +113,6 @@ export class AutoCadastroComponent {
       this.clienteService.autoCadastro(command).subscribe((response) => {
         this.showSuccessMessage = true;
       });
-      console.log(command);
     }
   }
 

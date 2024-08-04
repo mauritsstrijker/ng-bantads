@@ -1,7 +1,7 @@
 <div class="bg-gray-800 h-3rem shadow-2">
   <div
     class="navbar-nav mr-auto py-0"
-    *ngIf="usuarioLogado?.perfil === 'cliente'"
+    *ngIf="usuarioLogado?.perfil === 'CLIENTE'"
   >
     <p-button
       label="Autocadastro"
@@ -46,7 +46,7 @@
   </div>
   <div
     class="navbar-nav mr-auto py-0"
-    *ngIf="usuarioLogado?.perfil === 'gerente'"
+    *ngIf="usuarioLogado?.perfil === 'GERENTE'"
   >
     <p-button
       label="Página inicial"
@@ -71,7 +71,7 @@
   </div>
   <div
     class="navbar-nav mr-auto py-0"
-    *ngIf="usuarioLogado?.perfil === 'admin'"
+    *ngIf="usuarioLogado?.perfil === 'ADMIN'"
   >
     <p-button
       label="Página inicial"

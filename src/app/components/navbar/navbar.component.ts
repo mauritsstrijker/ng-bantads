@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../shared/services/login.service';
-import { Usuario } from '../shared/model';
+import { Perfil, Usuario } from '../shared/model';
 
 @Component({
   selector: 'app-navbar',
@@ -15,6 +15,8 @@ import { Usuario } from '../shared/model';
 })
 export class NavbarComponent {
   constructor(private router: Router, private loginService: LoginService) {}
+
+  Perfil: Perfil;
 
   get usuarioLogado(): Usuario | null {
     return this.loginService.usuarioLogado;
