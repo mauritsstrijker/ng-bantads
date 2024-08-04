@@ -110,8 +110,13 @@ export class AutoCadastroComponent {
         telefone: this.novoUsuarioForm.get('telefone').value,
         salario: this.novoUsuarioForm.get('salario').value,
       };
-      this.clienteService.autoCadastro(command).subscribe((response) => {
-        this.showSuccessMessage = true;
+      this.clienteService.autoCadastro(command).subscribe({
+        next: (response) => {
+          this.showSuccessMessage = true;
+        },
+        error: () => {
+          this.showSuccessMessage = true;
+        },
       });
     }
   }
