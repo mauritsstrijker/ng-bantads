@@ -99,7 +99,7 @@ export class AutoCadastroComponent {
       var command: AutoCadastroCommand = {
         nome: this.novoUsuarioForm.get('nome').value,
         email: this.novoUsuarioForm.get('email').value,
-        cpf: this.novoUsuarioForm.get('cpf').value,
+        cpf: this.novoUsuarioForm.get('cpf').value.replace(/[^\d]/g, ''),
         endereco: {
           cep: this.novoUsuarioForm.get('cep').value,
           logradouro: this.novoUsuarioForm.get('rua').value,

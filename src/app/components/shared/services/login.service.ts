@@ -28,6 +28,8 @@ export class LoginService {
         userId: decoded.userId,
         perfil: decoded.perfil,
         gerenteId: decoded.gerenteId,
+        clienteId: decoded.clienteId,
+        contaId: decoded.contaId,
       } as Usuario;
 
       return response;

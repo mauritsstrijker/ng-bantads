@@ -17,6 +17,8 @@ export class Usuario {
     public salario?: string,
     public endereco?: Endereco,
     public perfil?: Perfil,
-    public gerenteId?: string
+    public gerenteId?: string,
+    public contaId?: string,
+    public clienteId?: string
   ) {}
 }
