@@ -31,13 +31,13 @@
             <td class="text-center">
               <p-buttonGroup>
                 <p-button
-                  (onClick)="confirmarCadastro($event.target!)"
+                  (onClick)="confirmarCadastro($event.target!, usuario.id)"
                   size="small"
                   severity="success"
                   label="Confirmar"
                 ></p-button>
                 <p-button
-                  (onClick)="rejeitarCadastro($event.target!)"
+                  (onClick)="rejeitarCadastro($event.target!, usuario.id)"
                   size="small"
                   severity="danger"
                   label="Rejeitar"

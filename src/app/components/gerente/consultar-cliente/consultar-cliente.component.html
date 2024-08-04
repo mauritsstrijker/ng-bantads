@@ -10,12 +10,16 @@
       <div class="flex flex-column justify-content-center align-items-center">
         <div class="flex flex-column justify-content-center align-items-center">
           <div class="mb-3">
-            <p-inputMask mask="999.999.999-99" placeholder="CPF"></p-inputMask>
+            <p-inputMask
+              mask="999.999.999-99"
+              [(ngModel)]="cpfDigitado"
+              placeholder="CPF"
+            ></p-inputMask>
           </div>
           <div>
             <p-button
               label="Consultar cliente"
-              (click)="showDialog(clientes)"
+              (click)="buscarCliente()"
             ></p-button>
           </div>
           <p-dialog

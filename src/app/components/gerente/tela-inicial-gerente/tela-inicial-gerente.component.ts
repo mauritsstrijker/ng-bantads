@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { ButtonGroupModule } from 'primeng/buttongroup';
 import { TableModule } from 'primeng/table';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { InputTextModule } from 'primeng/inputtext';
+import { GerenteService } from '../../shared/services/gerente.service';
 
 @Component({
   selector: 'app-tela-inicial-gerente',
@@ -21,23 +22,25 @@ import { InputTextModule } from 'primeng/inputtext';
   templateUrl: './tela-inicial-gerente.component.html',
   styleUrl: './tela-inicial-gerente.component.scss',
 })
-export class TelaInicialGerenteComponent {
+export class TelaInicialGerenteComponent implements OnInit {
+  gerenteService = inject(GerenteService);
+
   constructor(
     private messageService: MessageService,
     private confirmationService: ConfirmationService
   ) {}
 
-  usuarios: any[] = [
-    { cpf: '123.456.789-00', nome: 'Fulano', salario: 2500 },
-    { cpf: '987.654.321-00', nome: 'Ciclano', salario: 3000 },
-    { cpf: '111.222.333-44', nome: 'Beltrano', salario: 3500 },
-    { cpf: '555.666.777-88', nome: 'Maria', salario: 2800 },
-    { cpf: '999.888.777-66', nome: 'João', salario: 3200 },
-    { cpf: '444.333.222-11', nome: 'Ana', salario: 2900 },
-    { cpf: '888.777.666-55', nome: 'Pedro', salario: 3100 },
-  ];
+  ngOnInit(): void {
+    this.gerenteService.buscarTelaInicial().subscribe({
+      next: (response) => {
+        this.usuarios = response;
+      },
+    });
+  }
 
-  confirmarCadastro(event: EventTarget) {
+  usuarios: any[] = [];
+
+  confirmarCadastro(event: EventTarget, id: string) {
     this.confirmationService.confirm({
       key: 'confirmar',
       target: event,
@@ -49,11 +52,14 @@ export class TelaInicialGerenteComponent {
           detail: 'Usuário cadastrado.',
           life: 3000,
         });
+        this.gerenteService.aprovarCliente(id).subscribe({
+          next: () => {},
+        });
       },
     });
   }
 
-  rejeitarCadastro(event: EventTarget) {
+  rejeitarCadastro(event: EventTarget, id: string) {
     this.confirmationService.confirm({
       key: 'rejeitar',
       target: event,
@@ -62,6 +68,9 @@ export class TelaInicialGerenteComponent {
           severity: 'error',
           detail: 'Usuário rejeitado.',
           life: 3000,
+        });
+        this.gerenteService.rejeitarCliente(id).subscribe({
+          next: () => {},
         });
       },
     });

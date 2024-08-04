@@ -8,12 +8,12 @@ export class GerenteService {
   http = inject(HttpClient);
 
   //TODO - Atualizar depois url
-  apiUrl = 'http://localhost:seilaaporta/gerentes';
+  apiUrl = 'http://localhost:3000/';
 
   constructor() {}
 
   buscarTelaInicial() {
-    return this.http.get<any>(this.apiUrl + '/inicio');
+    return this.http.get<any>(this.apiUrl + 'gerentes/inicio');
   }
 
   buscarTodos() {
@@ -21,16 +21,16 @@ export class GerenteService {
   }
 
   buscarTop3Clientes() {
-    return this.http.get<any[]>(this.apiUrl + '/clientes/top3');
+    return this.http.get<any[]>(this.apiUrl + 'clientes/top3');
   }
 
-  consultarCliente(clienteId: string) {
-    return this.http.get<any[]>(this.apiUrl + `/clientes/${clienteId}`);
+  consultarCliente(cpf: string) {
+    return this.http.get<any>(this.apiUrl + `gerentes/clientes/${cpf}`);
   }
 
   aprovarCliente(clienteId: string) {
-    return this.http.post<any[]>(
-      this.apiUrl + `/clientes/aprovar/${clienteId}`,
+    return this.http.put<any[]>(
+      this.apiUrl + `gerentes/clientes/aprovar/${clienteId}`,
       null
     );
   }
@@ -40,8 +40,8 @@ export class GerenteService {
     // {
     //   "motivo": "Exemplo motivo"
     // }
-    return this.http.post<any[]>(
-      this.apiUrl + `/clientes/rejeitar/${clienteId}`,
+    return this.http.put<any[]>(
+      this.apiUrl + `gerentes/clientes/rejeitar/${clienteId}`,
       null
     );
   }
