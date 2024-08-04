@@ -25,7 +25,7 @@ export class GerenteService {
   }
 
   consultarCliente(cpf: string) {
-    return this.http.get<any>(this.apiUrl + `gerentes/clientes/${cpf}`);
+    return this.http.get<any>(this.apiUrl + `clientes/${cpf}`);
   }
 
   aprovarCliente(clienteId: string) {
