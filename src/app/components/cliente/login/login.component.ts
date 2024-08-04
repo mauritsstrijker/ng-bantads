@@ -41,15 +41,28 @@ export class LoginComponent {
     this.loading = true;
     console.log(this.login);
     if (this.formLogin.form.valid) {
-      this.loginService.login(this.login).subscribe((usu) => {
-        console.log(usu);
-        if (usu != null) {
-          this.loginService.setToken(usu.token);
-          this.loading = false;
-          this.redirecionaUsuarioLogado();
-        } else {
-          this.message = 'Usuário/Senha inválidos.';
-        }
+      this.loginService.login(this.login).subscribe({
+        next: (usu) => {
+          console.log(usu);
+          if (usu != null) {
+            this.loginService.setToken(usu);
+            this.loading = false;
+            this.redirecionaUsuarioLogado();
+          } else {
+            this.message = 'Usuário/Senha inválidos.';
+          }
+        },
+        error: (e) => {
+          console.log(e);
+          var usu = e.error.text;
+          if (usu != null) {
+            this.loginService.setToken(usu);
+            this.loading = false;
+            this.redirecionaUsuarioLogado();
+          } else {
+            this.message = 'Usuário/Senha inválidos.';
+          }
+        },
       });
     }
     this.loading = false;

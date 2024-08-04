@@ -27,6 +27,7 @@ export class LoginService {
       var response = {
         userId: decoded.userId,
         perfil: decoded.perfil,
+        gerenteId: decoded.gerenteId,
       } as Usuario;
 
       return response;

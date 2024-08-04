@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputMaskModule } from 'primeng/inputmask';
+import { GerenteService } from '../../shared/services/gerente.service';
 
 @Component({
   selector: 'app-consulta-todos-clientes',
@@ -20,7 +21,16 @@ import { InputMaskModule } from 'primeng/inputmask';
   templateUrl: './consulta-todos-clientes.component.html',
   styleUrl: './consulta-todos-clientes.component.scss',
 })
-export class ConsultaTodosClientesComponent {
+export class ConsultaTodosClientesComponent implements OnInit {
+  gerenteService = inject(GerenteService);
+
+  ngOnInit(): void {
+    this.gerenteService.buscarTodosClientes().subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+    });
+  }
   showDialog(cliente: any) {
     this.selectedCliente = cliente;
     this.visible = true;

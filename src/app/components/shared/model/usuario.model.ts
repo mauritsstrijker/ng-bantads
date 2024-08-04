@@ -16,6 +16,7 @@ export class Usuario {
     public telefone?: string,
     public salario?: string,
     public endereco?: Endereco,
-    public perfil?: Perfil
+    public perfil?: Perfil,
+    public gerenteId?: string
   ) {}
 }
