@@ -1,9 +1,9 @@
 export class Endereco {
   constructor(
     public cep?: string,
-    public rua?: string,
+    public logradouro?: string,
     public numero?: string,
-    public estado?: string,
+    public uf?: string,
     public complemento?: string,
     public cidade?: string
   ) {}

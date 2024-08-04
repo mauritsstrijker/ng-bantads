@@ -97,14 +97,14 @@ export class AutoCadastroComponent {
   onSubmit() {
     if (this.novoUsuarioForm.valid) {
       var command: AutoCadastroCommand = {
-        nomeCompleto: this.novoUsuarioForm.get('nome').value,
+        nome: this.novoUsuarioForm.get('nome').value,
         email: this.novoUsuarioForm.get('email').value,
         cpf: this.novoUsuarioForm.get('cpf').value,
         endereco: {
           cep: this.novoUsuarioForm.get('cep').value,
-          rua: this.novoUsuarioForm.get('rua').value,
+          logradouro: this.novoUsuarioForm.get('rua').value,
           numero: this.novoUsuarioForm.get('numero').value,
-          estado: this.novoUsuarioForm.get('estado').value,
+          uf: this.novoUsuarioForm.get('estado').value,
           cidade: this.novoUsuarioForm.get('cidade').value,
         },
         telefone: this.novoUsuarioForm.get('telefone').value,

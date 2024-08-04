@@ -25,11 +25,12 @@
           id="email"
           name="email"
           type="text"
+          [(ngModel)]="login.usuario"
+          #usuario="ngModel"
           placeholder="Endereço de email"
           pinputtext=""
           class="p-inputtext p-component p-element w-full mb-3"
           required
-          email
         />
         <div class="control-group">
           <label for="password1" class="block text-900 font-medium mb-2"

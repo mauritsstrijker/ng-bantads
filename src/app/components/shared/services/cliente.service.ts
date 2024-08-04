@@ -35,12 +35,13 @@ export class ClienteService {
   }
 
   autoCadastro(command: AutoCadastroCommand) {
-    return this.http.post<any>(this.apiUrl + 'autocadastro', command);
+    console.log(command);
+    return this.http.post<any>(this.apiUrl + 'registrar', command);
   }
 }
 
 export interface AutoCadastroCommand {
-  nomeCompleto: string;
+  nome: string;
   email: string;
   cpf: string;
   endereco: Endereco;

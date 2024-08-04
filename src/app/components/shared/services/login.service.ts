@@ -10,7 +10,7 @@ const LS_CHAVE: string = 'token';
   providedIn: 'root',
 })
 export class LoginService {
-  BASE_URL = 'http://localhost:5001/autenticar';
+  BASE_URL = 'http://localhost:3000/autenticar';
 
   http = inject(HttpClient);
 

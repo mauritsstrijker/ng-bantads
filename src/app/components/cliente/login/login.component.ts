@@ -39,10 +39,12 @@ export class LoginComponent {
 
   logar(): void {
     this.loading = true;
+    console.log(this.login);
     if (this.formLogin.form.valid) {
       this.loginService.login(this.login).subscribe((usu) => {
+        console.log(usu);
         if (usu != null) {
-          this.loginService.setToken(usu);
+          this.loginService.setToken(usu.token);
           this.loading = false;
           this.redirecionaUsuarioLogado();
         } else {
