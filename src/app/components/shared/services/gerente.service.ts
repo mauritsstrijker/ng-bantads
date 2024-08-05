@@ -71,7 +71,7 @@ export class GerenteService {
 
   cadastrarGerente(gerente: GerenteDTO) {
     return this.http.post<any>(
-      'http://localhost:3000/administradores/gerentes/novo',
+      'http://localhost:3000/administradores/gerentes',
       gerente
     );
   }
