@@ -1,7 +1,14 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { RelatorioService } from '../../shared/services/relatorio.service';
+import { GerenteService } from '../../shared/services/gerente.service';
 
 @Component({
   selector: 'app-relatorio-de-clientes',
@@ -10,48 +17,22 @@ import { RelatorioService } from '../../shared/services/relatorio.service';
   templateUrl: './relatorio-de-clientes.component.html',
   styleUrl: './relatorio-de-clientes.component.scss',
 })
-export class RelatorioDeClientesComponent {
+export class RelatorioDeClientesComponent implements OnInit {
   @ViewChild('content', { static: false }) el!: ElementRef;
 
-  constructor(private readonly relatorioService: RelatorioService) {}
+  gerenteService = inject(GerenteService);
 
-  clientes: any[] = [
-    {
-      nome: 'Christopher Picolotto Rodrigues',
-      cpf: '123.456.789-00',
-      limite: 2000,
-      gerente: 'Carlos Andrade',
-      saldo: 1000.0,
-    },
-    {
-      nome: 'Leonardo Eugênio Panceri de Araujo',
-      cpf: '987.654.321-00',
-      limite: 3000,
-      gerente: 'Roberto Cunha',
-      saldo: 1500.0,
-    },
-    {
-      nome: 'Maurits Albert Strijker',
-      cpf: '200.461.280-00',
-      limite: 2500,
-      gerente: 'Germano Meyer',
-      saldo: 2000.0,
-    },
-    {
-      nome: 'Nicolas Portela Barbosa',
-      cpf: '535.995.280-63',
-      limite: 2800,
-      gerente: 'Carlos Andrade',
-      saldo: 2500.0,
-    },
-    {
-      nome: 'Ricardo de Paula Gomes',
-      cpf: '177.371.550-07',
-      limite: 4000,
-      gerente: 'Germano Meyer',
-      saldo: 3000.0,
-    },
-  ];
+  constructor(private readonly relatorioService: RelatorioService) {}
+  ngOnInit(): void {
+    this.gerenteService.buscarRelatorioAdm().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.clientes = response.relatorio;
+      },
+    });
+  }
+
+  clientes: any[];
 
   gerarRelatorioClientes() {
     const headers = ['cpf', 'nome', 'limite', 'gerente', 'saldo'];
@@ -92,6 +73,7 @@ export class RelatorioDeClientesComponent {
         '3000.0',
       ],
     ];
-    this.relatorioService.gerarPDF(headers, data);
+    console.log(this.clientes, data);
+    this.relatorioService.gerarPDF(headers, this.clientes);
   }
 }

@@ -16,7 +16,15 @@ export class GerenteService {
 
   constructor() {}
 
+  buscarRelatorioAdm() {
+    return this.http.get<any>(this.apiUrl + 'administradores/clientes');
+  }
+
   buscarTelaInicial() {
+    return this.http.get<any>(this.apiUrl + 'administradores/inicio');
+  }
+
+  buscarTelaInicialGerente() {
     return this.http.get<any>(this.apiUrl + 'gerentes/inicio');
   }
 
@@ -63,8 +71,14 @@ export class GerenteService {
 
   cadastrarGerente(gerente: GerenteDTO) {
     return this.http.post<any>(
-      'http://localhost:3000/administradores/gerentes',
+      'http://localhost:3000/administradores/gerentes/novo',
       gerente
+    );
+  }
+
+  deletarGerente(id: string) {
+    return this.http.delete<any>(
+      `http://localhost:3000/administradores/gerentes/${id}`
     );
   }
 }

@@ -7,6 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { InputMaskModule } from 'primeng/inputmask';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-area-gerencia',
@@ -52,10 +53,27 @@ export class AreaGerenciaComponent implements OnInit {
       },
     });
   }
+
+  deletarGerente(id: string) {
+    this.gerenteService.deletarGerente(id).subscribe({
+      next: () => {},
+      error: () => {
+        timer(2000).subscribe(() => {
+          this.gerenteService.buscarTodosGerentes().subscribe({
+            next: (response) => {
+              this.gerentes = response;
+            },
+          });
+        });
+      },
+    });
+  }
   gerentes: any[];
 
   cadastrarGerente() {
-    this.gerenteService.cadastrarGerente(this.criarOuEditarGerente).subscribe({
+    var command = this.criarOuEditarGerente;
+    command.cpf = command.cpf.replace(/[^\d]/g, '');
+    this.gerenteService.cadastrarGerente(command).subscribe({
       next: () => {},
       error: () => {},
     });

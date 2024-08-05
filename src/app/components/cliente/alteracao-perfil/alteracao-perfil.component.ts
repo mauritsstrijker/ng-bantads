@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CheckboxModule } from 'primeng/checkbox';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
@@ -12,6 +12,12 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ListboxModule } from 'primeng/listbox';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AutoCadastroCommand,
+  ClienteService,
+} from '../../shared/services/cliente.service';
+import { ViaCepService } from '../../shared/services/viacep.service';
+import { LoginService } from '../../shared/services/login.service';
 
 @Component({
   selector: 'app-alteracao-perfil',
@@ -34,77 +40,31 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './alteracao-perfil.component.scss',
 })
 export class AlteracaoPerfilComponent {
-  constructor(private location: Location) {}
+  constructor(
+    private location: Location,
+    private viacepService: ViaCepService
+  ) {}
 
   showSuccessMessage = false;
 
   valuecpf = 'xxx.xxx.xxx-xx';
 
-  tiposLogradouro = [
-    'Aeroporto',
-    'Alameda',
-    'Área',
-    'Avenida',
-    'Campo',
-    'Chácara',
-    'Colônia',
-    'Condomínio',
-    'Conjunto',
-    'Distrito',
-    'Esplanada',
-    'Estação',
-    'Estrada',
-    'Favela',
-    'Fazenda',
-    'Feira',
-    'Jardim',
-    'Ladeira',
-    'Lago',
-    'Lagoa',
-    'Largo',
-    'Loteamento',
-    'Morro',
-    'Núcleo',
-    'Parque',
-    'Passarela',
-    'Pátio',
-    'Praça',
-    'Quadra',
-    'Recanto',
-    'Residencial',
-    'Rodovia',
-    'Rua',
-    'Setor',
-    'Sítio',
-    'Travessa',
-    'Trecho',
-    'Trevo',
-    'Vale',
-    'Vereda',
-    'Via',
-    'Viaduto',
-    'Viela',
-    'Vila',
-  ];
-
-  endereco = { cep: '', rua: '', numero: '', complemento: '' };
+  endereco = { cep: '', logradouro: '', numero: '' };
   novoUsuario = {
     cpf: '',
     nome: '',
     email: '',
     telefone: '',
     endereco: this.endereco,
+    salario: '',
   };
 
   editarUsuarioForm!: FormGroup;
 
   ngOnInit(): void {
     this.editarUsuarioForm = new FormGroup({
-      cpf: new FormControl(this.novoUsuario.cpf, [
-        Validators.required,
-        // TODO: custom CPF validator
-      ]),
       nome: new FormControl(this.novoUsuario.nome, [Validators.required]),
+      salario: new FormControl(this.novoUsuario.salario, [Validators.required]),
       email: new FormControl(this.novoUsuario.email, [
         Validators.required,
         Validators.email,
@@ -121,13 +81,50 @@ export class AlteracaoPerfilComponent {
       estado: new FormControl(this.endereco.numero, [Validators.required]),
       cidade: new FormControl(this.endereco.numero, [Validators.required]),
       bairro: new FormControl(this.endereco.numero, [Validators.required]),
-      tipoLogradouro: new FormControl('', [Validators.required]),
     });
   }
 
+  clienteService = inject(ClienteService);
+
+  buscaEndereco() {
+    this.viacepService
+      .getAddress(this.editarUsuarioForm.get('cep')?.value)
+      .subscribe((address) => {
+        this.rua?.setValue(address.logradouro);
+        this.bairro?.setValue(address.bairro);
+        this.estado?.setValue(address.uf);
+        this.cidade?.setValue(address.localidade);
+      });
+  }
+
+  loginService = inject(LoginService);
   onSubmit() {
-    if (this.editarUsuarioForm.invalid) return;
-    this.editarUsuarioForm.reset({});
+    console.log('ola');
+    console.log(this.editarUsuarioForm);
+    if (this.editarUsuarioForm.valid) {
+      var command: AutoCadastroCommand = {
+        id: this.loginService.usuarioLogado.clienteId,
+        nome: this.editarUsuarioForm.get('nome').value,
+        email: this.editarUsuarioForm.get('email').value,
+        endereco: {
+          cep: this.editarUsuarioForm.get('cep').value,
+          logradouro: this.editarUsuarioForm.get('rua').value,
+          numero: this.editarUsuarioForm.get('numero').value,
+          uf: this.editarUsuarioForm.get('estado').value,
+          cidade: this.editarUsuarioForm.get('cidade').value,
+        },
+        telefone: this.editarUsuarioForm.get('telefone').value,
+        salario: this.editarUsuarioForm.get('salario').value,
+      };
+      this.clienteService.autoCadastro(command).subscribe({
+        next: (response) => {
+          this.showSuccessMessage = true;
+        },
+        error: () => {
+          this.showSuccessMessage = true;
+        },
+      });
+    }
   }
 
   onTipoLogradouroChange(event: any) {

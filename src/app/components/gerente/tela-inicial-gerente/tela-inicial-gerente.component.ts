@@ -31,9 +31,10 @@ export class TelaInicialGerenteComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.gerenteService.buscarTelaInicial().subscribe({
+    this.gerenteService.buscarTelaInicialGerente().subscribe({
       next: (response) => {
         this.usuarios = response;
+        console.log(response);
       },
     });
   }

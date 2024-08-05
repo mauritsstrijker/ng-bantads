@@ -54,15 +54,17 @@ export class SaqueComponent implements OnInit {
   confirmarSaque() {
     if (this.valorSaque && this.valorSaque > 0) {
       console.log(`Saque de R$ ${this.valorSaque} realizado.`);
-      this.saldoDisponivel -= this.valorSaque;
-      this.valorSaque = undefined;
-      this.valorRestante = undefined;
+
       var command: TransacaoDTO = {
-        idCliente: parseFloat(this.loginService.usuarioLogado.clienteId),
+        idCliente: parseFloat(this.loginService.usuarioLogado.contaId),
         tipoTransacao: 2,
         valorTransacao: this.valorSaque,
         data: new Date().toISOString(),
       };
+      this.saldoDisponivel -= this.valorSaque;
+      this.valorSaque = undefined;
+      this.valorRestante = undefined;
+
       this.contaService.sacar(command).subscribe({
         next: () => {},
       });

@@ -17,7 +17,7 @@ export class ContaService {
 
   buscarSaldo() {
     var contaId = this.loginService.usuarioLogado.contaId;
-    return this.http.get<any>(`http://localhost:3000/saldo/${contaId}`);
+    return this.http.get<any>(`http://localhost:3000/conta/saldo/${contaId}`);
   }
 
   depositar(command: TransacaoDTO) {

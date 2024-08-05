@@ -44,7 +44,7 @@ export class DepositoComponent {
   depositar() {
     if (this.valorDeposito !== undefined && this.valorDeposito > 0) {
       var command: TransacaoDTO = {
-        idCliente: parseFloat(this.loginService.usuarioLogado.clienteId),
+        idCliente: parseFloat(this.loginService.usuarioLogado.contaId),
         tipoTransacao: 1,
         valorTransacao: this.valorDeposito,
         data: new Date().toISOString(),

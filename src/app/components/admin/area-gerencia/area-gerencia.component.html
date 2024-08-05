@@ -24,8 +24,15 @@
           <td>{{ gerente.cpf }}</td>
           <td>{{ gerente.email }}</td>
           <td>{{ gerente.telefone }}</td>
-          <td><p-button icon="pi pi-trash"></p-button></td>
-          <td><p-button icon="pi pi-pencil"></p-button></td>
+          <td>
+            <p-button
+              icon="pi pi-trash"
+              (onClick)="deletarGerente(gerente.id)"
+            ></p-button>
+          </td>
+          <td>
+            <p-button icon="pi pi-pencil"></p-button>
+          </td>
         </tr>
       </ng-template>
     </p-table>

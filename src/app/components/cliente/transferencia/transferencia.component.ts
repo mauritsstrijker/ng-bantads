@@ -45,9 +45,10 @@ export class TransferenciaComponent {
 
   transferir() {
     if (this.valorTransferencia !== undefined && this.valorTransferencia > 0) {
+      console.log(this.destino);
       console.log(`Transferindo R$ ${this.valorTransferencia}`);
       var command: TransacaoDTO = {
-        idCliente: parseFloat(this.loginService.usuarioLogado.clienteId),
+        idCliente: parseFloat(this.loginService.usuarioLogado.contaId),
         tipoTransacao: 3,
         valorTransacao: this.valorTransferencia,
         data: new Date().toISOString(),

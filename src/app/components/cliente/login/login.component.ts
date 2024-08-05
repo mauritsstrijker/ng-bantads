@@ -45,7 +45,7 @@ export class LoginComponent {
         next: (usu) => {
           console.log(usu);
           if (usu != null) {
-            this.loginService.setToken(usu);
+            this.loginService.setToken(usu.token);
             this.loading = false;
             this.redirecionaUsuarioLogado();
           } else {
@@ -56,7 +56,7 @@ export class LoginComponent {
           console.log(e);
           var usu = e.error.text;
           if (usu != null) {
-            this.loginService.setToken(usu);
+            this.loginService.setToken(usu.token);
             this.loading = false;
             this.redirecionaUsuarioLogado();
           } else {

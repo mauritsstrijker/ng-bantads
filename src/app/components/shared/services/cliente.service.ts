@@ -41,9 +41,10 @@ export class ClienteService {
 }
 
 export interface AutoCadastroCommand {
+  id?: string;
   nome: string;
   email: string;
-  cpf: string;
+  cpf?: string;
   endereco: Endereco;
   telefone: string;
   salario: number;
