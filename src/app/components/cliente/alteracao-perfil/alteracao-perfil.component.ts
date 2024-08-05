@@ -106,6 +106,7 @@ export class AlteracaoPerfilComponent {
         id: this.loginService.usuarioLogado.clienteId,
         nome: this.editarUsuarioForm.get('nome').value,
         email: this.editarUsuarioForm.get('email').value,
+        cpf: '',
         endereco: {
           cep: this.editarUsuarioForm.get('cep').value,
           logradouro: this.editarUsuarioForm.get('rua').value,

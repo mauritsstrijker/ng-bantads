@@ -15,10 +15,20 @@ import { ContaService } from '../../shared/services/conta.service';
 export class TelaInicialClienteComponent implements OnInit {
   contaService = inject(ContaService);
   constructor(private router: Router) {}
+
+  nome: string;
   ngOnInit(): void {
     this.contaService.buscarSaldo().subscribe({
       next: (response) => {
         this.saldo = response;
+      },
+    });
+    this.contaService.buscarNome().subscribe({
+      next: (response) => {
+        this.nome = response;
+      },
+      error: (e) => {
+        this.nome = e.error.text;
       },
     });
   }

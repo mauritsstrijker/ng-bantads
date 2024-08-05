@@ -15,6 +15,12 @@ export class ContaService {
 
   constructor() {}
 
+  buscarNome() {
+    return this.http.get<any>(
+      `http://localhost:3000/clientename/${this.loginService.usuarioLogado.clienteId}`
+    );
+  }
+
   buscarSaldo() {
     var contaId = this.loginService.usuarioLogado.contaId;
     return this.http.get<any>(`http://localhost:3000/conta/saldo/${contaId}`);
