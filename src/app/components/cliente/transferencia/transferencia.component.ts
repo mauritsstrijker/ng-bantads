@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { Button, ButtonModule } from 'primeng/button';
+import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputMaskModule } from 'primeng/inputmask';
 import { DialogModule } from 'primeng/dialog';

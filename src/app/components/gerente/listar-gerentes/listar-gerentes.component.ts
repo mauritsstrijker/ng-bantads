@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
 
+interface Gerente {
+  nome: string;
+  cpf: string;
+  email: string;
+  telefone: string;
+}
+
 @Component({
   selector: 'app-listar-gerentes',
   templateUrl: './listar-gerentes.component.html',
   styleUrls: ['./listar-gerentes.component.scss'],
 })
 export class ListarGerentesComponent {
-  gerentes: any[] = [
+  gerentes: Gerente[] = [
     {
       nome: 'Gerente 1',
       cpf: '123.456.789-10',

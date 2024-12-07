@@ -1,35 +1,33 @@
 <div class="flex">
   <div class="mt-6 h-full w-12 flex justify-content-center">
-    <p-card [styleClass]="'justify-content-center flex align-items-center'">
+    <p-card styleClass="justify-content-center flex align-items-center">
       <p class="mb-3 flex justify-content-center">Valor a ser depositado:</p>
-      <div
-        class="flex flex-column justify-content-center align-items-center"
-      ></div>
-      <div class="mb-3">
-        <p-inputNumber
-          id="currency"
-          mode="currency"
-          inputId="currency-brazil"
-          currency="BRL"
-          locale="pt-BR"
-          [(ngModel)]="valorDeposito"
-        ></p-inputNumber>
-      </div>
-      <div>
-        <p-button label="Depositar" (click)="abrirConfirmacao()"></p-button>
-      </div>
-      <p-dialog
-        header="Confirmação de Depósito"
-        [(visible)]="visible"
-        [modal]="true"
-      >
-        <div>
-          Valor a ser depositado: {{ valorDeposito | currency : "BRL" }}
+      <div class="flex flex-column justify-content-center align-items-center">
+        <div class="mb-3">
+          <p-inputNumber
+            id="currency"
+            mode="currency"
+            inputId="currency-brazil"
+            currency="BRL"
+            locale="pt-BR"
+            [(ngModel)]="valorDeposito"
+          ></p-inputNumber>
         </div>
-        <p-footer>
-          <p-button label="Confirmar" (click)="depositar()"></p-button>
-          <p-button label="Cancelar" (click)="visible = false"></p-button>
-        </p-footer> </p-dialog
-    ></p-card>
+        <div>
+          <p-button label="Depositar" (click)="abrirConfirmacao()"></p-button>
+        </div>
+      </div>
+    </p-card>
+    <p-dialog
+      header="Confirmação de Depósito"
+      [(visible)]="visible"
+      [modal]="true"
+    >
+      <div>Valor a ser depositado: {{ valorDeposito | currency : "BRL" }}</div>
+      <p-footer>
+        <p-button label="Confirmar" (click)="depositar()"></p-button>
+        <p-button label="Cancelar" (click)="visible = false"></p-button>
+      </p-footer>
+    </p-dialog>
   </div>
 </div>

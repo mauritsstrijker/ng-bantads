@@ -1,23 +1,24 @@
-<div class="mt-6 h-full w-12 flex justify-content-center">
-  <div class="p-col-6">
+<div class="mt-6 flex justify-content-center">
+  <div class="p-col-12 p-md-8">
     <div class="card p-shadow-4">
       <h1 class="p-text-center">Listagem de Gerentes</h1>
 
       <div class="p-fluid">
         <ul class="p-list-unstyled">
-          <li *ngFor="let gerente of gerentes">
-            <div class="p-d-flex p-ai-center">
-              <div class="p-grid p-justify-start">
-                <div class="p-col-fixed" style="width: 150px">
-                  <strong>Nome:</strong> {{ gerente.nome }}
-                </div>
-                <div class="p-col"><strong>CPF:</strong> {{ gerente.cpf }}</div>
-                <div class="p-col">
-                  <strong>Email:</strong> {{ gerente.email }}
-                </div>
-                <div class="p-col">
-                  <strong>Telefone:</strong> {{ gerente.telefone }}
-                </div>
+          <li
+            *ngFor="let gerente of gerentes"
+            class="p-d-flex p-ai-center p-mb-3"
+          >
+            <div class="p-grid p-justify-start">
+              <div class="p-col-fixed" style="width: 150px">
+                <strong>Nome:</strong> {{ gerente.nome }}
+              </div>
+              <div class="p-col"><strong>CPF:</strong> {{ gerente.cpf }}</div>
+              <div class="p-col">
+                <strong>Email:</strong> {{ gerente.email }}
+              </div>
+              <div class="p-col">
+                <strong>Telefone:</strong> {{ gerente.telefone }}
               </div>
             </div>
           </li>
